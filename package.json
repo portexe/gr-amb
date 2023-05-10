@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "dev": "bin/vite dev"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "vite": "^4.3.5",
+    "vite-plugin-ruby": "^3.2.2"
+  },
+  "dependencies": {
+    "react-dom": "^18.2.0"
+  }
+}
