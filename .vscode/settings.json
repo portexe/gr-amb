@@ -1,5 +1,12 @@
 {
   "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "ruby.lint": {
+    "rubocop": true
+  },
+  "ruby.format": "rubocop",
+  "[ruby]": {
+    "editor.defaultFormatter": "rebornix.ruby"
+  }
 }
