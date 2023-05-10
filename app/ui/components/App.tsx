@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import botImage from '../images/bot.png';
 
 export function App() {
   const [submitting, setSubmitting] = useState(false);
-  const [textboxValue, setTextboxValue] = useState('What is you latest work experience?');
+  const [textboxValue, setTextboxValue] = useState('What is your latest work experience?');
   const [serverError, setServerError] = useState('');
   const [latestAnswer, setLatestAnswer] = useState('');
 
@@ -12,6 +13,7 @@ export function App() {
     if (!textboxValue) return;
 
     setSubmitting(true);
+    setLatestAnswer('');
 
     fetch('/api', {
       method: 'POST',
@@ -41,6 +43,8 @@ export function App() {
 
   return (
     <form onSubmit={submitQuestion} className='app-container'>
+      <img src={botImage} />
+
       <p>Ask a question about my work history and AI will answer it!</p>
 
       <div className='input-container'>
