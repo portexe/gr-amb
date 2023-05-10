@@ -9,7 +9,6 @@ require 'tiktoken_ruby'
 
 DOC_EMBEDDINGS_MODEL = 'text-embedding-ada-002'
 
-# Parse PDF
 class ParsePdf
   Dotenv.load
 
@@ -34,8 +33,6 @@ class ParsePdf
       }
     )
 
-    puts result
-
     result['data'][0]['embedding']
   end
 
@@ -47,9 +44,6 @@ class ParsePdf
     rows.map { |row| get_doc_embedding(row[1]) }
   end
 
-  # rubocop:disable Lint/MissingCopEnableDirective
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
   def run
     pdf_path = Rails.root.join('storage', 'pdf', 'resume.pdf')
     reader = PDF::Reader.new(pdf_path)
