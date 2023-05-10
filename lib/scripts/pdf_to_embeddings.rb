@@ -45,7 +45,7 @@ class ParsePdf
   end
 
   def run
-    pdf_path = Rails.root.join('storage', 'pdf', 'resume.pdf')
+    pdf_path = Rails.root.join('app', 'assets', 'pdf', 'resume.pdf')
     reader = PDF::Reader.new(pdf_path)
 
     res = []
