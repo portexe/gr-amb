@@ -1,0 +1,21 @@
+.app-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+
+  font-family: sans-serif;
+}
+.input-container input {
+  padding: 5px;
+  width: 500px;
+}
+
+.actions-container {
+  display: flex;
+  gap: 10px;
+}
+
+.actions-container button {
+  padding: 5px;
+}
