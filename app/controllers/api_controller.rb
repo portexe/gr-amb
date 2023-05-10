@@ -110,37 +110,27 @@ class ApiController < ApplicationController
   def index
     question_text = params[:question]
 
-    # Add question mark if user did not.
     question_text += '?' unless question_text.end_with?('?')
 
-    # previous_question = Question.find_by(question: question_asked)
+    previous_question = Question.find_by(question: question_text)
 
-    # if previous_question
-    #     previous_question.increment!(:ask_count)
-    #     render json: {
-    #       question: previous_question.question,
-    #       answer: previous_question.answer,
-    #       id: previous_question.id
-    #     }
+    if previous_question
+      render json: {
+        question: previous_question.question,
+        answer: previous_question.answer
+      }
+    else
+      answer = retrieve_answer(question_text)
 
-    answer, context = retrieve_answer(question_text)
+      Question.create(
+        question: question_text,
+        answer:
+      )
 
-    # new_question = Question.create(
-    #   question: question_asked,
-    #   answer:,
-    #   context:
-    # )
-
-    # render json: {
-    #   question: new_question.question,
-    #   answer: new_question.answer,
-    #   id: new_question.id
-    # }
-
-    render json: {
-      answer:,
-      context:,
-      question: question_text
-    }
+      render json: {
+        answer:,
+        question: question_text
+      }
+    end
   end
 end

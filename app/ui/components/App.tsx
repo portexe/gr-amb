@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 export function App() {
   const [submitting, setSubmitting] = useState(false);
   const [textboxValue, setTextboxValue] = useState('What is you latest work experience?');
-  const [, setServerError] = useState('');
+  const [serverError, setServerError] = useState('');
   const [latestAnswer, setLatestAnswer] = useState('');
 
   function submitQuestion(e: React.FormEvent<HTMLFormElement>) {
@@ -31,7 +31,9 @@ export function App() {
         setSubmitting(false);
       })
       .catch((err) => {
-        setServerError('There was an error submitting your question');
+        setServerError(
+          'There was an error submitting your question. Please try again in a moment.',
+        );
         setSubmitting(false);
         console.error(err);
       });
@@ -49,9 +51,6 @@ export function App() {
         <button type='submit' disabled={submitting}>
           Ask question
         </button>
-        <button type='button' disabled={submitting}>
-          I'm feeling lucky
-        </button>
       </div>
 
       {submitting && <div className='loading-indicator'>Calculating... beep.. boop..</div>}
@@ -60,6 +59,12 @@ export function App() {
         <div className='answer'>
           <h3>Zack:</h3>
           <p>{latestAnswer}</p>
+        </div>
+      )}
+
+      {serverError && (
+        <div className='error'>
+          <p>{serverError}</p>
         </div>
       )}
     </form>
