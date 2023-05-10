@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 
 export function App() {
   const [submitting, setSubmitting] = useState(false);
-  const [textboxValue, setTextboxValue] = useState('');
+  const [textboxValue, setTextboxValue] = useState('What is you latest work experience?');
   const [, setServerError] = useState('');
+  const [latestAnswer, setLatestAnswer] = useState('');
 
   function submitQuestion(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -23,7 +24,10 @@ export function App() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        if (res.answer) {
+          setLatestAnswer(res.answer);
+        }
+
         setSubmitting(false);
       })
       .catch((err) => {
@@ -35,7 +39,7 @@ export function App() {
 
   return (
     <form onSubmit={submitQuestion} className='app-container'>
-      <p>Ask a question about the book and AI will answer it:</p>
+      <p>Ask a question about my work history and AI will answer it!</p>
 
       <div className='input-container'>
         <input value={textboxValue} onChange={(e) => setTextboxValue(e.target.value)} />
@@ -49,6 +53,15 @@ export function App() {
           I'm feeling lucky
         </button>
       </div>
+
+      {submitting && <div className='loading-indicator'>Calculating... beep.. boop..</div>}
+
+      {latestAnswer && (
+        <div className='answer'>
+          <h3>Zack:</h3>
+          <p>{latestAnswer}</p>
+        </div>
+      )}
     </form>
   );
 }

@@ -19,3 +19,8 @@
 .actions-container button {
   padding: 5px;
 }
+
+.answer {
+  width: 500px;
+  text-align: center;
+}
