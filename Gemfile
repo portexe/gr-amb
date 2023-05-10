@@ -77,3 +77,4 @@ gem "ruby-openai"
 gem 'tiktoken_ruby', '~> 0.0.4'
 gem 'dotenv'
 gem 'rubocop'
+gem 'pg'
