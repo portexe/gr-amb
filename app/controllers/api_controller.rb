@@ -85,8 +85,8 @@ class ApiController < ApplicationController
   end
 
   def retrieve_answer(question_text)
-    csv_pages_path = Rails.root.join('storage', 'csv', 'resume.pages.csv')
-    csv_embeddings_path = Rails.root.join('storage', 'csv', 'resume.embeddings.csv')
+    csv_pages_path = Rails.root.join('app', 'assets', 'csv', 'resume.pages.csv')
+    csv_embeddings_path = Rails.root.join('app', 'assets', 'csv', 'resume.embeddings.csv')
 
     pages_csv = CSV.read(csv_pages_path, headers: true)
     embeddings_csv = load_embeddings(csv_embeddings_path)
