@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "bin/vite dev"
+    "dev": "bin/dev"
   },
   "devDependencies": {
     "@types/react": "^18.2.6",
